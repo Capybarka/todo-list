@@ -1,0 +1,86 @@
+.form {
+    &__wrapper {
+        padding: 3rem;
+        width: 31%;
+        margin: 3.5rem auto 0 auto;
+        background-color: rgba(39, 39, 39, 0.852);
+        color: white;
+        border-radius: 2.5rem;
+        box-shadow: .8rem .8rem 5rem black;
+    }
+
+    &-registration-wrapper {
+        padding: 4rem;
+        width: 35%;
+        margin: 10vh auto 10vh auto;
+    }
+}
+
+.heading {
+    text-align: center;
+    font-size: 1.9rem;
+    margin-bottom: 3rem;
+}
+
+.forget-password-link {
+    display: block;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.btn-form {
+    display: block;
+    margin: 2rem 0;
+    width: 100%;
+    background-color: rgb(121, 121, 121);
+    border-radius: 1.5rem;
+    height: 4rem;
+    color: white;
+    transition: all .7s;
+    cursor: pointer;
+    outline: none;
+    border: none;
+
+    &:hover {
+        background-color: rgb(84, 84, 84);
+    }
+
+    &:active {
+        transform: none;
+    }
+}
+
+.sigIn-registration-link a {
+    display: block;
+    margin-top: 1rem;
+    color: rgb(216, 81, 81);
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+
+.signForm-input {
+    display: block;
+    margin-bottom: 2rem;
+
+    label {
+        margin-bottom: .7rem;
+        display: block;
+        font-size: 1.4rem;
+    }
+}
+
+.form-input {
+    display: block;
+    padding: 1rem;
+    width: 100%;
+    background-color: rgb(187, 187, 187);
+    border-radius: 1.5rem;
+    height: 4rem;
+
+    &:focus {
+        outline: none;
+    }
+}

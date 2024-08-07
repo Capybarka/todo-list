@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO-list: description task</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="image-background">
+    <div class="container">
+        <h1 class="heading">TODO LIST</h1>
+        <h2 class="description_title">Описание задачи</h2>
+        <p class="task-name">Название задачи</p>
+
+        <section class="descriptionTask__text">
+            <textarea id="descriptionTask-input" placeholder="Описание задачи..."></textarea>
+        </section>
+
+        <div class="btn-container">
+            <button class="btn-white" type="button">Сохранить</button>
+            <a href="/html/index.html" class="btn-white" type="button">Назад</a>
+        </div>
+
+        <script>
+            "use strict";
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const textarea = document.getElementById('descriptionTask-input');
+
+                textarea.addEventListener('input', function () {
+                    this.style.height = 'auto';
+                    this.style.height = (this.scrollHeight) + 'px';
+                });
+
+                // Инициализируем высоту textarea
+                textarea.style.height = 'auto';
+                textarea.style.height = (textarea.scrollHeight) + 'px';
+            });
+
+        </script>
+    </div>
+</body>
+
+</html>

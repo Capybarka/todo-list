@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO-list</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="body-main">
+    <div class="container">
+
+        <div class="tasks__wrapper">
+            <h1 class="heading">TODO LIST</h1>
+
+            <section class="searchTask__section">
+                <input type="text" id="searchTask-input" placeholder="Поиск задачи...">
+                <a href="#!" class="btn__search">Искать</a>
+            </section>
+
+            <section class="tasksSection">
+                <ul class="tasksList">
+
+                    <li class="task-item">
+                        <p class="task-content"></p>
+
+                        <div class="task-control">
+                            <a href="/html/descTask.html" class="task-btn">Изменить</a>
+                            <a href="#!" class="task-btn">Удалить</a>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <div class="btn-addTask">+</div>
+
+            <img class="img-logout" src="/img/logout.png" alt="log out">
+
+            <!-- добавление задачи - по умолчанию скрыт -->
+            <div class="modal display-none">
+                <p>Новая задача</p>
+                <input class="form-input" type="text" placeholder="Введите название задачи">
+                <section>
+                    <textarea id="descriptionTask-input" placeholder="Описание задачи..."></textarea>
+                </section>
+                <div class="modal__btn_wrapper">
+                    <button class="modal__btn modal_cancel_btn" type="button">Отменить</button>
+                    <button class="modal__btn modal_apply_btn" type="button">Добавить</button>
+                </div>
+            </div>
+            <script src="/js/script.js"></script>
+        </div>
+    </div>
+
+</body>
+
+</html>
