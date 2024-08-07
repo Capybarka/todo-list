@@ -1,8 +1,11 @@
 "use strict";
 
+let modal = document.querySelector('.modal');
+let changePanel = document.querySelector('.changeTask_wrapper');
+
+
 // открытие окна для добавления новой задачи
 document.querySelector('.btn-addTask').addEventListener('click', () => {
-    let modal = document.querySelector('.modal');
     modal.classList.remove('display-none');
 })
 
@@ -26,14 +29,39 @@ function createTask() {
     taskControlPanel.classList.add('task-control');
 
     // создаем 2 кнопки внутри контейнера
+
+    // изменение задачи 
     let btn1 = document.createElement('a');
     btn1.className = 'task-btn';
     btn1.innerHTML = 'Изменить';
     taskControlPanel.append(btn1);
 
+    btn1.addEventListener('click', (event) => {
+        event.stopPropagation();
 
+        changePanel.classList.remove('display-none');
+    })
 
+    let changeReadyBtn = document.querySelector('.changeBtn');
+    changeReadyBtn.addEventListener('click', () => {
+        let newName = document.querySelector('#changeName');
+        let newDesc = document.querySelector('#changeDesk');
 
+        taskName.innerHTML = newName.value;
+        newTaskElement.nextElementSibling.innerHTML = newDesc.value;
+
+        // очищение полей ввода новых данных
+        newName.value = '';
+        newDesc.value = '';
+
+        changePanel.classList.add('display-none');
+    })
+
+    // кнопка отмены изменения
+    let cancelChange = document.querySelector('.changeCancelBtn');
+    cancelChange.addEventListener('click', () => {
+        changePanel.classList.add('display-none');
+    })
 
 
     let btn2 = document.createElement('a');
@@ -52,11 +80,12 @@ function createTask() {
     })
 
 
-
     newTaskElement.append(taskControlPanel);
 
 
     let modal = document.querySelector('.modal');
+    taskNameInput.value = '';
+    textInput.value = '';
     modal.classList.add('display-none');
 
 
@@ -66,8 +95,15 @@ function createTask() {
     newTaskElement.addEventListener('click', () => {
         showDescription(newTaskElement, textInput);
     })
-    // return newTaskElement;
+
+
 }
+
+function changeTask(taskName, newTaskElement) {
+
+}
+
+// document.querySelector('.changeBtn').addEventListener('click', changeTask)
 
 function showDescription(task, text) {
 
