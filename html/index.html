@@ -21,15 +21,14 @@
 
             <section class="tasksSection">
                 <ul class="tasksList">
-
-                    <li class="task-item">
-                        <p class="task-content"></p>
-
+                    <!-- <li class="task-item">
+                        <p></p>
                         <div class="task-control">
-                            <a href="/html/descTask.html" class="task-btn">Изменить</a>
-                            <a href="#!" class="task-btn">Удалить</a>
+                            <a href="" class="task-btn"></a>
+                            <a href="" class="task-btn"></a>
                         </div>
-                    </li>
+                    </li> -->
+
                 </ul>
             </section>
 
@@ -40,18 +39,19 @@
             <!-- добавление задачи - по умолчанию скрыт -->
             <div class="modal display-none">
                 <p>Новая задача</p>
-                <input class="form-input" type="text" placeholder="Введите название задачи">
+
+                <input id="addTaskName-input" class="form-input" type="text" placeholder="Введите название задачи">
                 <section>
                     <textarea id="descriptionTask-input" placeholder="Описание задачи..."></textarea>
                 </section>
                 <div class="modal__btn_wrapper">
                     <button class="modal__btn modal_cancel_btn" type="button">Отменить</button>
-                    <button class="modal__btn modal_apply_btn" type="button">Добавить</button>
+                    <button class="modal__btn modal_apply_btn" id="addTaskBtn" type="button">Добавить</button>
                 </div>
             </div>
-            <script src="/js/script.js"></script>
         </div>
     </div>
+    <script src="/js/script.js"></script>
 
 </body>
 

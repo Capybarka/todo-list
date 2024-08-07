@@ -63,12 +63,10 @@
 
         &:hover {
             cursor: pointer;
-            transform: translateX(.3rem);
         }
 
         &:active {
-            transform: translateX(0rem);
-            transform: translate(.3rem, .3rem);
+            transform: translateY(.3rem);
         }
 
     }
@@ -109,6 +107,14 @@
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: .2rem;
+}
+
+.task-item-description {
+    border-radius: .8rem;
+
+    &:hover {
+        transform: none;
+    }
 }
 
 .btn-addTask {
