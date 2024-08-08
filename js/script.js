@@ -12,7 +12,7 @@ document.querySelector('.btn-addTask').addEventListener('click', () => {
 
 function createTask() {
     let taskNameInput = document.querySelector('#addTaskName-input');
-    let textInput = document.querySelector('#descriptionTask-input');
+    let textInput = document.querySelector('#descriptionTask-input').value;
 
     // создаем li - новую задачу и вставляем в список
     let newTaskElement = document.createElement('li');
@@ -36,26 +36,34 @@ function createTask() {
     btn1.innerHTML = 'Изменить';
     taskControlPanel.append(btn1);
 
+
+
+
     btn1.addEventListener('click', (event) => {
         event.stopPropagation();
 
         changePanel.classList.remove('display-none');
+        // если есть блок описания задачи, то сначала его скрыть
+        if (document.querySelector('.task-item-description')) {
+            document.querySelector('.task-item-description').remove();
+        }
+
+        let changeReadyBtn = document.querySelector('.changeBtn');
+        changeReadyBtn.onclick = () => {
+            let newName = document.querySelector('#changeName').value;
+            let newDesc = document.querySelector('#changeDesk').value;
+
+            taskName.innerHTML = newName;
+            textInput = newDesc;
+
+            // очищение полей ввода новых данных
+            newName = '';
+            newDesc = '';
+
+            changePanel.classList.add('display-none');
+        }
     })
 
-    let changeReadyBtn = document.querySelector('.changeBtn');
-    changeReadyBtn.addEventListener('click', () => {
-        let newName = document.querySelector('#changeName');
-        let newDesc = document.querySelector('#changeDesk');
-
-        taskName.innerHTML = newName.value;
-        newTaskElement.nextElementSibling.innerHTML = newDesc.value;
-
-        // очищение полей ввода новых данных
-        newName.value = '';
-        newDesc.value = '';
-
-        changePanel.classList.add('display-none');
-    })
 
     // кнопка отмены изменения
     let cancelChange = document.querySelector('.changeCancelBtn');
@@ -101,7 +109,7 @@ function createTask() {
             taskTextWrapper.classList.add('task-item-description');
 
             let taskText = document.createElement('p');
-            taskText.innerHTML = textInput.value;
+            taskText.innerHTML = textInput;
 
             taskTextWrapper.append(taskText);
 
