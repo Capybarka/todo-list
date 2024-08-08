@@ -82,49 +82,57 @@ function createTask() {
 
     newTaskElement.append(taskControlPanel);
 
-
-    let modal = document.querySelector('.modal');
-    taskNameInput.value = '';
-    textInput.value = '';
     modal.classList.add('display-none');
-
 
     let tasksList = document.querySelector('.tasksList');
     tasksList.append(newTaskElement);
 
+
+    // открытие описания
     newTaskElement.addEventListener('click', () => {
-        showDescription(newTaskElement, textInput);
+        let elem = document.querySelector('.task-item-description');
+
+        if (elem) {
+            elem.remove();
+        }
+        else {
+            let taskTextWrapper = document.createElement('div');
+            taskTextWrapper.className = 'task-item';
+            taskTextWrapper.classList.add('task-item-description');
+
+            let taskText = document.createElement('p');
+            taskText.innerHTML = textInput.value;
+
+            taskTextWrapper.append(taskText);
+
+            newTaskElement.after(taskTextWrapper);
+        }
     })
-
-
 }
 
-function changeTask(taskName, newTaskElement) {
-
-}
 
 // document.querySelector('.changeBtn').addEventListener('click', changeTask)
 
-function showDescription(task, text) {
+// function showDescription(task, text) {
 
-    let elem = document.querySelector('.task-item-description');
+//     let elem = document.querySelector('.task-item-description');
 
-    if (elem) {
-        elem.remove();
-    }
-    else {
-        let taskTextWrapper = document.createElement('div');
-        taskTextWrapper.className = 'task-item';
-        taskTextWrapper.classList.add('task-item-description');
+//     if (elem) {
+//         elem.remove();
+//     }
+//     else {
+//         let taskTextWrapper = document.createElement('div');
+//         taskTextWrapper.className = 'task-item';
+//         taskTextWrapper.classList.add('task-item-description');
 
-        let taskText = document.createElement('p');
-        taskText.innerHTML = text.value;
+//         let taskText = document.createElement('p');
+//         taskText.innerHTML = text.value;
 
-        taskTextWrapper.append(taskText);
+//         taskTextWrapper.append(taskText);
 
-        task.after(taskTextWrapper);
-    }
-}
+//         task.after(taskTextWrapper);
+//     }
+// }
 
 
 // при нажатии на кнопку Добавить задача добавляется 
