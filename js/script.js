@@ -2,11 +2,11 @@
 
 let modal = document.querySelector('.modal');
 let changePanel = document.querySelector('.changeTask_wrapper');
+let tasksList = document.querySelector('.tasksList');
 
 function check(value) {
     return value.lenght === 0 ? false : true;
 }
-
 
 // открытие окна для добавления новой задачи
 document.querySelector('.btn-addTask').addEventListener('click', () => {
@@ -91,7 +91,6 @@ function createTask() {
 
         modal.classList.add('display-none');
 
-        let tasksList = document.querySelector('.tasksList');
         tasksList.append(newTaskElement);  // вставляем новую задачу в список
 
 
@@ -122,17 +121,60 @@ function createTask() {
         document.querySelector('#descriptionTask-input').value = ''
     }
     else {
-        alert('!!!!!!!!!');
+        alert('Пожалуйста, заполните все поля!')
     }
-
 }
 
 
-// при нажатии на кнопку Добавить задача добавляется 
-let addTaskBtn = document.querySelector('#addTaskBtn');
-addTaskBtn.addEventListener('click', () => {
+// при нажатии на кнопку Добавить, задача добавляется 
+document.querySelector('#addTaskBtn').onclick = () => {
     createTask();
-})
+}
+
+// отмена добавления новой задачи
+document.querySelector('#cancelAddTaskBtn').onclick = () => {
+    // Очищаем поля ввода 
+    document.querySelector('#addTaskName-input').value = '';
+    document.querySelector('#descriptionTask-input').value = ''
+
+    modal.classList.add('display-none');
+}
+
+// реализация поиска задачи
+function searchTask() {
+    let searchValue = document.querySelector('#searchTask-input').value;
+
+    let tasks = document.querySelectorAll('.task-item');
+
+    for (let task of tasks) {
+        if (task.firstElementChild.innerText.trim() === searchValue.trim()) {
+            return task;
+        }
+    }
+
+    return null;
+}
+
+// поиск задачи
+document.querySelector('.btn__search').addEventListener('click', () => {
+    let searchInput = document.querySelector('#searchTask-input');
+
+    // поиск задачи и ее показ
+    let foundTask = searchTask();
+    console.log(foundTask);
+    if (foundTask) {
+        let cloneTask = foundTask.cloneNode(true);
+
+        //скрываем задачи
+        document.querySelectorAll('.task-item').forEach(task => {
+            task.classList.add('display-none');
+            searchInput.value = '';
+        })
+
+        tasksList.append(cloneTask);
+    }
+});
+
 
 
 

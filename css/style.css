@@ -92,7 +92,7 @@ html {
 }
 
 .display-none {
-  display: none;
+  display: none !important;
 }
 
 .container {
@@ -165,7 +165,7 @@ html {
   align-items: center;
 }
 
-.btn__search {
+.btn__search, .btn__cancelSearch {
   display: block;
   padding: 0.8rem;
   width: 11rem;
@@ -176,12 +176,16 @@ html {
   color: white;
   transition: background-color 0.85s, box-shadow 0.85s, transform 0.1s;
 }
-.btn__search:hover {
+.btn__search:hover, .btn__cancelSearch:hover {
   background-color: rgb(97, 43, 154);
   box-shadow: 0.5rem 0.5rem 1rem rgb(38, 36, 36);
 }
-.btn__search:active {
+.btn__search:active, .btn__cancelSearch:active {
   transform: translateY(0.3rem);
+}
+
+.btn__search {
+  margin-right: 1rem;
 }
 
 .tasksList {
