@@ -23,6 +23,11 @@ function createTask() {
         let newTaskElement = document.createElement('li');
         newTaskElement.classList.add('task-item');
 
+        // присвоение атрибутов
+        newTaskElement.setAttribute('data-taskName', taskNameInput);
+        newTaskElement.setAttribute('data-taskDesc', textInput);
+
+
         // создаем параграф для названия задачи и вставяем в cаму задачу
         let taskName = document.createElement('p');
         taskName.classList.add('task-content');
@@ -42,13 +47,7 @@ function createTask() {
         taskControlPanel.append(btn1);
 
         btn1.addEventListener('click', (event) => {
-            event.stopPropagation();
-
             changePanel.classList.remove('display-none');
-            // если есть блок описания задачи, то сначала его скрыть
-            if (document.querySelector('.task-item-description')) {
-                document.querySelector('.task-item-description').remove();
-            }
 
             let changeReadyBtn = document.querySelector('.changeBtn');
             changeReadyBtn.onclick = () => {
@@ -72,8 +71,6 @@ function createTask() {
         taskControlPanel.append(btn2);
 
         btn2.addEventListener('click', (event) => {
-            event.stopPropagation();
-
             let desc = newTaskElement.nextElementSibling;
             if (desc && desc.classList.contains('task-item-description')) {
                 desc.remove();
@@ -93,32 +90,17 @@ function createTask() {
 
         tasksList.append(newTaskElement);  // вставляем новую задачу в список
 
-
-        // открытие описания
-        newTaskElement.addEventListener('click', () => {
-            let elem = document.querySelector('.task-item-description');
-
-            if (elem) {
-                elem.remove();
-            }
-            else {
-                let taskTextWrapper = document.createElement('div');
-                taskTextWrapper.className = 'task-item';
-                taskTextWrapper.classList.add('task-item-description');
-
-                let taskText = document.createElement('p');
-                taskText.innerHTML = textInput;
-
-                taskTextWrapper.append(taskText);
-
-                newTaskElement.after(taskTextWrapper);
-
-            }
-        })
-
         // Очищаем поля ввода после успешного добавления задачи
         document.querySelector('#addTaskName-input').value = '';
-        document.querySelector('#descriptionTask-input').value = ''
+        document.querySelector('#descriptionTask-input').value = '';
+
+
+        // открытие страницы описания при нажатии на задачу
+        newTaskElement.onclick = () => {
+            const taskName = newTaskElement.getAttribute('data-taskName');
+            const taskDesc = newTaskElement.getAttribute('data-taskDesc');
+            window.location.href = `../html/description.html?name=${encodeURIComponent(taskName)}&desc=${encodeURIComponent(taskDesc)}`;
+        }
     }
     else {
         alert('Пожалуйста, заполните все поля!')
@@ -161,7 +143,7 @@ document.querySelector('.btn__search').addEventListener('click', () => {
 
     // поиск задачи и ее показ
     let foundTask = searchTask();
-    console.log(foundTask);
+
     if (foundTask) {
         let cloneTask = foundTask.cloneNode(true);
 
@@ -174,6 +156,15 @@ document.querySelector('.btn__search').addEventListener('click', () => {
         tasksList.append(cloneTask);
     }
 });
+
+document.querySelector('.btn__cancelSearch').onclick = () => {
+    document.querySelectorAll('.task-item').forEach(task => {
+        task.classList.remove('display-none');
+    })
+}
+
+
+
 
 
 

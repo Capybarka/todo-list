@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="body-main">
+    <div class="container">
+        <h1 class="heading">TODO LIST</h1>
+
+        <h2 class="task-name"></h2>
+        <p class="task-description"></p>
+
+        <a href="../html/index.html" class="btn">Назад</a>
+        <script>
+            "use strict";
+
+            function getParams() {
+                const params = new URLSearchParams(window.location.search);
+
+                return {
+                    name: params.get('name'),
+                    desc: params.get('desc')
+                };
+            }
+
+            const { name, desc } = getParams();
+            document.querySelector('.task-name').innerHTML = name;
+            document.querySelector('.task-description').innerHTML = desc;
+        </script>
+
+    </div>
+</body>
+
+</html>

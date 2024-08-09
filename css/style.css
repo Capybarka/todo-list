@@ -165,7 +165,7 @@ html {
   align-items: center;
 }
 
-.btn__search, .btn__cancelSearch {
+.btn__search, .btn__cancelSearch, .btn {
   display: block;
   padding: 0.8rem;
   width: 11rem;
@@ -176,11 +176,11 @@ html {
   color: white;
   transition: background-color 0.85s, box-shadow 0.85s, transform 0.1s;
 }
-.btn__search:hover, .btn__cancelSearch:hover {
+.btn__search:hover, .btn__cancelSearch:hover, .btn:hover {
   background-color: rgb(97, 43, 154);
   box-shadow: 0.5rem 0.5rem 1rem rgb(38, 36, 36);
 }
-.btn__search:active, .btn__cancelSearch:active {
+.btn__search:active, .btn__cancelSearch:active, .btn:active {
   transform: translateY(0.3rem);
 }
 
@@ -375,4 +375,24 @@ html {
   margin-bottom: 2rem;
   border: none;
   box-shadow: 0.5rem 0.5rem 1rem rgb(82, 81, 81);
+}
+
+.task-name {
+  font-size: 3rem;
+  text-align: center;
+  margin: 3rem 0;
+  text-decoration: underline;
+}
+
+.task-description {
+  width: 70%;
+  padding: 2rem;
+  margin: 0 auto 3rem auto;
+  border: 1px solid white;
+  border-radius: 1rem;
+  box-shadow: 0.5rem 0.5rem 2rem rgb(26, 23, 23);
+}
+
+.btn {
+  margin: 0 auto;
 }/*# sourceMappingURL=style.css.map */
