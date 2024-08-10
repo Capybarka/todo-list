@@ -54,10 +54,15 @@ function addTaskToDOM(taskNameInput, textInput) {
     taskControlPanel.append(btn1);
 
     btn1.addEventListener('click', (event) => {
+        event.stopPropagation();
         changePanel.classList.remove('display-none');
 
+        document.querySelector('#changeName').value = newTaskElement.getAttribute('data-taskName');
+        document.querySelector('#changeDesk').value = newTaskElement.getAttribute('data-taskDesc');
+
+
         let changeReadyBtn = document.querySelector('.changeBtn');
-        changeReadyBtn.onclick = () => {
+        changeReadyBtn.addEventListener('click', () => {
             let newName = document.querySelector('#changeName').value;
             let newDesc = document.querySelector('#changeDesk').value;
 
@@ -71,7 +76,7 @@ function addTaskToDOM(taskNameInput, textInput) {
             saveTasksToLocalStorage(tasks);
 
             changePanel.classList.add('display-none');
-        }
+        })
     })
 
     let btn2 = document.createElement('a');
@@ -133,6 +138,11 @@ document.querySelector('#cancelAddTaskBtn').onclick = () => {
     modal.classList.add('display-none');
 }
 
+// отмена изменения
+document.querySelector('.changeCancelBtn').addEventListener('click', () => {
+    changePanel.classList.add('display-none');
+})
+
 // реализация поиска задачи
 function searchTask() {
     let searchValue = document.querySelector('#searchTask-input').value;
@@ -163,7 +173,6 @@ document.querySelector('.btn__search').addEventListener('click', () => {
 
         tasksList.append(cloneTask);
 
-        // Обработка клика на скопированной задаче
         cloneTask.addEventListener('click', () => {
             const taskName = cloneTask.getAttribute('data-taskName');
             const taskDesc = cloneTask.getAttribute('data-taskDesc');
@@ -172,12 +181,24 @@ document.querySelector('.btn__search').addEventListener('click', () => {
 
         searchInput.value = '';
     }
+    else {
+        alert('Задача не найдена');
+    }
 });
 
+// показать все задачи
 document.querySelector('.btn__cancelSearch').onclick = () => {
-    document.querySelectorAll('.task-item').forEach(task => {
-        task.classList.remove('display-none');
-    })
+    let allTasks = document.querySelectorAll('.task-item');
+
+    if (allTasks.length > 0) {
+        let lastTask = allTasks[allTasks.length - 1];
+        lastTask.remove();
+
+        allTasks.forEach(task => {
+            task.classList.remove('display-none');
+        })
+
+    }
 }
 
 // Загружаем задачи при открытии страницы
